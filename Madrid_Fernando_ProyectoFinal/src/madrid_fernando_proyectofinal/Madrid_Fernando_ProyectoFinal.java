@@ -9,13 +9,17 @@ public class Madrid_Fernando_ProyectoFinal {
         
         Scanner entrada = new Scanner(System.in);
         
+        double caja = 0, adicion_caja;
         int opcion = 0;
+        String tipo_cliente;
         
         while(opcion != 6) {
             System.out.println("===============================");
-            System.out.println("Supercito Morfly");
+            System.out.println("       Supercito Morfly");
             System.out.println("===============================");
             System.out.println("");
+            System.out.print(String.format("Efectivo en Caja: L.%.2f", caja));
+            System.out.println("\n");
             System.out.println("1. Abrir Caja");
             System.out.println("2. Ventas");
             System.out.println("3. Compras");
@@ -29,8 +33,18 @@ public class Madrid_Fernando_ProyectoFinal {
                 opcion = entrada.nextInt();
                 
                 switch(opcion) {
-                    
                     case 1: // Abrir Caja
+                        System.out.println("===============================");
+                        System.out.println("  Supercito Morfly | Caja");
+                        System.out.println("===============================");
+                        System.out.println("");
+                        System.out.print("Ingrese la cantidad que desea adicionar: ");
+                        adicion_caja = entrada.nextDouble();
+                        caja += adicion_caja;
+                        System.out.println("\n");
+                        System.out.println("**** Efectivo Adicionado Exitosamente ****");
+                        System.out.println("");
+                        break;
                     case 2: // Ventas
                     case 3: // Compras
                     case 4: // Reportes
