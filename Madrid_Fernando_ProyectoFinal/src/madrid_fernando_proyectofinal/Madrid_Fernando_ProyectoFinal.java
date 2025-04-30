@@ -76,6 +76,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                     System.out.print("Ingrese el codigo del producto que vendera: ");
                                     codigo = entrada.nextInt();
                                     
+                                    
                                     switch(codigo){
                                         case 1:
                                             System.out.println("\n===============================");
@@ -87,17 +88,26 @@ public class Madrid_Fernando_ProyectoFinal {
                                             System.out.println("");
                                             
                                             if(tipoCliente.equalsIgnoreCase("A") || tipoCliente.equalsIgnoreCase("B")){
-                                                System.out.print("Ingrese la cantidad en kilogramos: ");
-                                                cantidadAzucar = entrada.nextDouble();
+                                                while(true){
+                                                    try{
+                                                        System.out.print("Ingrese la cantidad en kilogramos: ");
+                                                        cantidadAzucar = entrada.nextDouble();
+                                                        break;
+                                                    }catch(InputMismatchException e){
+                                                        System.out.println("");
+                                                        System.out.println("**** Formato Ingresado Invalido CASE 1 ****");
+                                                        System.out.println("");
+                                                        entrada.nextLine();
+                                                    }
+                                                }
                                                 break;
                                             }
                                         default:
                                             System.out.println("");
                                             System.out.println("*** Este codigo de producto no existe ***");
-                                            System.out.println("");
                                             break;
                                     }
-                                    System.out.print("\nDesea comprar algo mas?");
+                                    System.out.println("\nDesea comprar algo mas?");
                                     seguirComprando = entrada.next().toUpperCase().strip();
                                     
                                     // Proceso de facturacion
@@ -108,6 +118,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                         System.out.println("=======================================================");
                                         System.out.println("");
                                         System.out.println("ID Factura: "+idFacturacion);
+                                        System.out.println("Tipo de Cliente: "+tipoCliente);
                                         System.out.println("");
                                         System.out.println("Codigo     Nombre      Cantidad     Precio     Total");
                                         
