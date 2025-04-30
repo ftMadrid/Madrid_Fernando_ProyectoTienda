@@ -12,9 +12,9 @@ public class Madrid_Fernando_ProyectoFinal {
         
         // Variables
         boolean salirVentas;
-        double caja = 0, adicion_caja, cantidad_azucar = 0, cantidad_avena = 0, cantidad_trigo = 0, cantidad_maiz = 0;
-        int opcion = 0, codigo, id_facturacion = 0;
-        String tipo_cliente = "", seguir_comprando = "";
+        double caja = 0, adicionCaja, cantidadAzucar = 0, cantidadAvena = 0, cantidadTrigo = 0, cantidadMaiz = 0;
+        int opcion = 0, codigo, idFacturacion = 0;
+        String tipoCliente, seguirComprando;
         
         while(opcion != 6) {
             System.out.println("===============================");
@@ -43,8 +43,8 @@ public class Madrid_Fernando_ProyectoFinal {
                         System.out.println("===============================");
                         System.out.println("");
                         System.out.print("Ingrese la cantidad que desea adicionar: ");
-                        adicion_caja = entrada.nextDouble();
-                        caja += adicion_caja;
+                        adicionCaja = entrada.nextDouble();
+                        caja += adicionCaja;
                         System.out.println("");
                         System.out.println("**** Efectivo Adicionado Exitosamente ****");
                         System.out.println("");
@@ -58,9 +58,9 @@ public class Madrid_Fernando_ProyectoFinal {
                             System.out.println("===============================");
                             System.out.println("");
                             System.out.print("Ingrese el tipo de cliente: ");
-                            tipo_cliente = entrada.next().toUpperCase().strip();
+                            tipoCliente = entrada.next().toUpperCase().strip();
                             
-                            if(tipo_cliente.equalsIgnoreCase("A") || tipo_cliente.equalsIgnoreCase("B") || tipo_cliente.equalsIgnoreCase("C")){
+                            if(tipoCliente.equalsIgnoreCase("A") || tipoCliente.equalsIgnoreCase("B") || tipoCliente.equalsIgnoreCase("C")){
                                 
                                 do{
                                     System.out.println("\n=================================");
@@ -82,13 +82,13 @@ public class Madrid_Fernando_ProyectoFinal {
                                             System.out.println("  Supercito Morfly | Ventas");
                                             System.out.println("===============================");
                                             System.out.println("");
-                                            System.out.println("Tipo de Cliente: "+tipo_cliente);
+                                            System.out.println("Tipo de Cliente: "+tipoCliente);
                                             System.out.println("Producto Seleccionado: Azucar");
                                             System.out.println("");
                                             
-                                            if(tipo_cliente.equalsIgnoreCase("A") || tipo_cliente.equalsIgnoreCase("B")){
+                                            if(tipoCliente.equalsIgnoreCase("A") || tipoCliente.equalsIgnoreCase("B")){
                                                 System.out.print("Ingrese la cantidad en kilogramos: ");
-                                                cantidad_azucar = entrada.nextDouble();
+                                                cantidadAzucar = entrada.nextDouble();
                                                 break;
                                             }
                                         default:
@@ -98,25 +98,25 @@ public class Madrid_Fernando_ProyectoFinal {
                                             break;
                                     }
                                     System.out.print("\nDesea comprar algo mas?");
-                                    seguir_comprando = entrada.next().toUpperCase().strip();
+                                    seguirComprando = entrada.next().toUpperCase().strip();
                                     
                                     // Proceso de facturacion
-                                    if(seguir_comprando.equalsIgnoreCase("No")){
-                                        id_facturacion += 1;
+                                    if(seguirComprando.equalsIgnoreCase("No")){
+                                        idFacturacion += 1;
                                         System.out.println("=======================================================");
                                         System.out.println("            Supercito Morfly | Facturacion");
                                         System.out.println("=======================================================");
                                         System.out.println("");
-                                        System.out.println("ID Factura: "+id_facturacion);
+                                        System.out.println("ID Factura: "+idFacturacion);
                                         System.out.println("");
                                         System.out.println("Codigo     Nombre      Cantidad     Precio     Total");
                                         
-                                        if(cantidad_azucar > 0){
-                                            System.out.println("  1        Azucar      "+cantidad_azucar+"kg        Lps.25.00  Lps.100");
+                                        if(cantidadAzucar > 0){
+                                            System.out.println("  1        Azucar      "+cantidadAzucar+"kg        Lps.25.00  Lps.100");
                                         }
                                         salirVentas = true;
                                     }
-                                }while(seguir_comprando.equalsIgnoreCase("Si"));
+                                }while(seguirComprando.equalsIgnoreCase("Si"));
                                 
                             }else{
                                 System.out.println("");
