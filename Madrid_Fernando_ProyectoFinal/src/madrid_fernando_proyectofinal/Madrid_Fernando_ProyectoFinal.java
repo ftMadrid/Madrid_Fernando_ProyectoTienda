@@ -255,7 +255,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                         }
                                         
                                         System.out.println("\nDesea agregar algo mas?");
-                                        seguirComprando = entrada.next().toUpperCase().strip();
+                                        seguirComprando = entrada.next();
 
                                         // Proceso de facturacion
                                         if(seguirComprando.equalsIgnoreCase("No")){
@@ -287,10 +287,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                 totalCantidadMaiz = 0;
                                             }
                                             subtotalVentas = ventaAzucar+ventaAvena+ventaTrigo+ventaMaiz;
-                                            ventaAzucar = 0; // Reiniciar valorES
-                                            ventaAvena = 0;
-                                            ventaTrigo = 0;
-                                            ventaMaiz = 0;
+                                            ventaAzucar = 0; ventaAvena = 0; ventaTrigo = 0; ventaMaiz = 0;
                                             if(subtotalVentas >= 1000){
                                                 descuentoVentas = 5;
                                                 descuentoAplicadoVentas = subtotalVentas*(descuentoVentas/100.0);
@@ -311,7 +308,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                             caja += totalVentas;
                                             salirVentas = true; // Poner fin ciclo de Ventas
                                         }
-                                    }while(seguirComprando.equalsIgnoreCase("Si")); // Fin del Do While luego de facturacion
+                                    }while(!seguirComprando.equalsIgnoreCase("No")); // Fin del Do While luego de facturacion
 
                                 }else{
                                     System.out.println("\n*** Este tipo de cliente no existe ***");
