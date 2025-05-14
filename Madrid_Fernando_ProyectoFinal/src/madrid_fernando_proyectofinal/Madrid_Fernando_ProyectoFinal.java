@@ -10,7 +10,7 @@ public class Madrid_Fernando_ProyectoFinal {
         Scanner entrada = new Scanner(System.in).useDelimiter("\n");
         
         // Variables
-        boolean abrirCaja = false, salirSeccion; // Booleanos generales
+        boolean abrirCaja = false, salirSeccion, cierreCaja = false; // Booleanos generales
         double caja = 0, adicionCaja = 0, // Seccion de Abrir Caja
                 
                // Variables para Seccion de Ventas y Compras 
@@ -22,7 +22,10 @@ public class Madrid_Fernando_ProyectoFinal {
                 
                // Variables para Seccion de Reportes
                estrellaAzucar = 0, estrellaAvena = 0, estrellaTrigo = 0, estrellaMaiz = 0,
-               margenVentas = 0, margenCompras = 0, promedioVentasCompras = 0, ventaMayor = 0, compraMayor = 0, cantidadEstrella = 0;
+               margenVentas = 0, margenCompras = 0, promedioVentasCompras = 0, ventaMayor = 0, compraMayor = 0, cantidadEstrella = 0,
+        
+               // Variables para Seccion Cierre de Caja
+               limiteBanco = 0, guardarBanco = 0;
         
         // Variables para seccion de Ventas y Compras
         int opcion = 0, codigo, idFacturacion = 0, descuentoVentas, cantidadVentas = 0, cantidadCompras = 0; 
@@ -53,56 +56,72 @@ public class Madrid_Fernando_ProyectoFinal {
                     case 1: // Seccion Abrir Caja
                         System.out.println("\n===============================");
                         System.out.println("  Supercito Morfly | Caja");
-                        System.out.println("===============================");
-                        System.out.println("");
+                        System.out.println("===============================\n");
                         
                         // Chequeo sobre si la caja esta abierta o no
-                        if(!abrirCaja){
-                            while(true){
-                                System.out.print("Ingrese la cantidad que desea adicionar: ");
-                                
-                                try{
-                                    adicionCaja = entrada.nextDouble();
+                        if(!cierreCaja) {
+                            if(!abrirCaja){
+                                while(true){
+                                    System.out.print("Ingrese la cantidad que desea adicionar: ");
 
-                                    if(adicionCaja > 0) {
-                                        caja += adicionCaja;
-                                        abrirCaja = true;
-                                        System.out.println("");
-                                        System.out.println("Efectivo Adicionado Exitosamente");
-                                        System.out.println(String.format("Cantidad Adicionada: L.%.2f",adicionCaja));
-                                        System.out.println("");
-                                        System.out.println("Se ha abierto caja!\n");
-                                        break;
-                                    }else{
-                                        System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                    try{
+                                        adicionCaja = entrada.nextDouble();
+
+                                        if(adicionCaja > 0) {
+                                            caja += adicionCaja;
+                                            abrirCaja = true;
+                                            System.out.println("");
+                                            System.out.println("Efectivo Adicionado Exitosamente");
+                                            System.out.println(String.format("Cantidad Adicionada: L.%.2f",adicionCaja));
+                                            System.out.println("");
+                                            System.out.println("** Se ha abierto caja **\n");
+                                            break;
+                                        }else{
+                                            System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                        }
+                                    }catch(InputMismatchException e){
+                                        System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                        entrada.nextLine();
                                     }
-                                }catch(InputMismatchException e){
-                                    System.out.println("\n*** Formato Ingresado Invalido ***\n");
-                                    entrada.nextLine();
+                                }
+                            }else{ // Proceso de la caja ya estando abierta
+                                while (true){
+                                    System.out.print("Ingrese la cantidad que desea adicionar: ");
+
+                                    try{
+                                        adicionCaja = entrada.nextDouble();
+
+                                        if(adicionCaja > 0) {
+                                            caja += adicionCaja;
+                                            abrirCaja = true;
+                                            System.out.println("");
+                                            System.out.println("Efectivo Adicionado Exitosamente");
+                                            System.out.println(String.format("Cantidad Adicionada: L.%.2f",adicionCaja));
+                                            System.out.println("");
+                                            break;
+                                        }else{
+                                            System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                        }
+                                    }catch(InputMismatchException e){
+                                        System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                        entrada.nextLine();
+                                    }
                                 }
                             }
-                        }else{ // Proceso de la caja ya estando abierta
-                            while (true){
-                                System.out.print("Ingrese la cantidad que desea adicionar: ");
-                                
-                                try{
-                                    adicionCaja = entrada.nextDouble();
-
-                                    if(adicionCaja > 0) {
-                                        caja += adicionCaja;
-                                        abrirCaja = true;
-                                        System.out.println("");
-                                        System.out.println("Efectivo Adicionado Exitosamente");
-                                        System.out.println(String.format("Cantidad Adicionada: L.%.2f",adicionCaja));
-                                        System.out.println("");
-                                        break;
-                                    }else{
-                                        System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
-                                    }
-                                }catch(InputMismatchException e){
-                                    System.out.println("\n*** Formato Ingresado Invalido ***\n");
-                                    entrada.nextLine();
-                                }
+                        }else{                           
+                            if(!abrirCaja){
+                                System.out.println("** Se ha abierto caja **\n");
+                                margenTotal = ""; promedioVentasCompras = 0; cantidadVentas = 0; margenVentas = 0; cantidadCompras = 0; margenCompras = 0;
+                                ventaMayor = 0; compraMayor = 0; productoEstrella = ""; cantidadEstrella = 0;
+                                estrellaAzucar = 0; estrellaAvena = 0; estrellaTrigo = 0; estrellaMaiz = 0;
+                                cantidadAzucar = 0; cantidadAvena = 0; cantidadTrigo = 0; cantidadMaiz = 0;
+                                totalCantidadAzucar = 0; totalCantidadAvena = 0; totalCantidadTrigo = 0; totalCantidadMaiz = 0;
+                                ventaAzucar = 0; ventaAvena = 0; ventaTrigo = 0; ventaMaiz = 0;
+                                abrirCaja = true;
+                                break;
+                            }else{
+                                System.out.println("** La caja ya se encuentra abierta **\n");
+                                break;
                             }
                         }
                         break;
@@ -724,6 +743,29 @@ public class Madrid_Fernando_ProyectoFinal {
                         Thread.sleep(5000);
                         break;
                     case 5: // Cierre de Caja
+                        
+                        // Calculos
+                        limiteBanco = caja*0.60;
+                                                
+                        System.out.println("\n=========================================");
+                        System.out.println("    Supercito Morfly | Cierre de Caja");
+                        System.out.println("==========================================\n");
+                        System.out.println(String.format("Cantidad en Caja: Lps.%.2f\n",caja));
+                        System.out.println("Nota: Solo se puede depositar menos o el 60%\nde efectivo que hay en caja.\n");
+                                              
+                        while(true) {
+                            System.out.print("Ingrese el efectivo a depositar en el banco: ");
+                            guardarBanco = entrada.nextDouble();
+                            
+                            if(guardarBanco <= limiteBanco) {
+                                caja = caja - guardarBanco;
+                                System.out.println(String.format("\nSe guardo en el banco Lps.%.2f\n",guardarBanco));
+                                cierreCaja = true; abrirCaja = false;
+                                break;
+                            }else{
+                                System.out.println("\n*** No puedes depositar mas del 60% del efectivo en caja ***\n");
+                            }
+                        }                   
                         break;
                     case 6: // Salir del Sistema
                         System.out.println("\nQue tenga lindo dia!\n");
