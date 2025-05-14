@@ -461,264 +461,263 @@ public class Madrid_Fernando_ProyectoFinal {
                         }
                     case 3: // Compras
                         if(abrirCaja){
-                                salirSeccion = false;
-                                while(!salirSeccion) {
-                                    System.out.println("\n===============================");
-                                    System.out.println("  Supercito Morfly | Compras");
-                                    System.out.println("===============================");
+                            salirSeccion = false;
+                            while(!salirSeccion) {
+                                System.out.println("\n===============================");
+                                System.out.println("  Supercito Morfly | Compras");
+                                System.out.println("===============================");
+                                System.out.println("");
+                                System.out.print("Ingrese el tipo de proveedor (A, B, C): ");
+                                tipoCliente = entrada.next().toUpperCase().strip();
+
+                                if(tipoCliente.equalsIgnoreCase("A") || tipoCliente.equalsIgnoreCase("B") || tipoCliente.equalsIgnoreCase("C")){
+                                    System.out.println("\n=================================");
+                                    System.out.println("   Supercito Morfly | Compras");
+                                    System.out.println("=================================");
                                     System.out.println("");
-                                    System.out.print("Ingrese el tipo de proveedor (A, B, C): ");
-                                    tipoCliente = entrada.next().toUpperCase().strip();
+                                    System.out.println("Codigo     Producto      Precio");
+                                    System.out.println("  1         Azucar      Lps.25.00");
+                                    System.out.println("  2         Avena       (B) Lps.25.00 - (C) Lps.22.00");
+                                    System.out.println("  3         Trigo       Lps.30.00");
+                                    System.out.println("  4         Maiz        Lps.18.00");
+                                    System.out.println("=================================");
+                                    System.out.println("  5     Salir de Compras");
+                                    System.out.println("=================================");
+                                    System.out.println("");
+                                    System.out.print("Ingrese el codigo del producto que comprara: ");
+                                    codigo = entrada.nextInt();
 
-                                    if(tipoCliente.equalsIgnoreCase("A") || tipoCliente.equalsIgnoreCase("B") || tipoCliente.equalsIgnoreCase("C")){
+                                    switch(codigo){
+                                        case 1:
+                                            if(tipoCliente.equalsIgnoreCase("A")){
+                                                System.out.println("\n===============================");
+                                                System.out.println("  Supercito Morfly | Compras");
+                                                System.out.println("===============================");
+                                                System.out.println("");
+                                                System.out.println("Tipo de Proveedor: "+tipoCliente);
+                                                System.out.println("Producto Seleccionado: Azucar");
+                                                System.out.println(String.format("Inventario: %.1fkg",inventarioAzucar));
+                                                System.out.println("");
 
-                                            System.out.println("\n=================================");
-                                            System.out.println("   Supercito Morfly | Compras");
-                                            System.out.println("=================================");
-                                            System.out.println("");
-                                            System.out.println("Codigo     Producto      Precio");
-                                            System.out.println("  1         Azucar      Lps.25.00");
-                                            System.out.println("  2         Avena       (B) Lps.25.00 - (C) Lps.22.00");
-                                            System.out.println("  3         Trigo       Lps.30.00");
-                                            System.out.println("  4         Maiz        Lps.18.00");
-                                            System.out.println("=================================");
-                                            System.out.println("  5     Salir de Compras");
-                                            System.out.println("=================================");
-                                            System.out.println("");
-                                            System.out.print("Ingrese el codigo del producto que comprara: ");
-                                            codigo = entrada.nextInt();
+                                                while(true){
+                                                    try{
+                                                        System.out.print("Ingrese la cantidad en kilogramos: ");
+                                                        cantidadAzucar = entrada.nextDouble();
 
-                                            switch(codigo){
-                                                case 1:
-                                                    if(tipoCliente.equalsIgnoreCase("A")){
-                                                        System.out.println("\n===============================");
-                                                        System.out.println("  Supercito Morfly | Compras");
-                                                        System.out.println("===============================");
-                                                        System.out.println("");
-                                                        System.out.println("Tipo de Proveedor: "+tipoCliente);
-                                                        System.out.println("Producto Seleccionado: Azucar");
-                                                        System.out.println(String.format("Inventario: %.1fkg",inventarioAzucar));
-                                                        System.out.println("");
-
-                                                        while(true){
-                                                            try{
-                                                                System.out.print("Ingrese la cantidad en kilogramos: ");
-                                                                cantidadAzucar = entrada.nextDouble();
-
-                                                                if(cantidadAzucar > 0) {
-                                                                    inventarioAzucar += cantidadAzucar;
-                                                                    totalCantidadAzucar += cantidadAzucar;
-                                                                    ventaAzucar = totalCantidadAzucar*25;
-                                                                    break;
-                                                                }else{
-                                                                    System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n"); 
-                                                                } 
-                                                            }catch(InputMismatchException e){
-                                                                System.out.println("\n*** Formato Ingresado Invalido ***\n");
-                                                                entrada.nextLine();
-                                                            }
-                                                        }
-                                                        break;
-                                                    }else{
-                                                        System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
-                                                        salirSeccion = true;
-                                                        break;
+                                                        if(cantidadAzucar > 0) {
+                                                            inventarioAzucar += cantidadAzucar;
+                                                            totalCantidadAzucar += cantidadAzucar;
+                                                            ventaAzucar = totalCantidadAzucar*25;
+                                                            break;
+                                                        }else{
+                                                            System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n"); 
+                                                        } 
+                                                    }catch(InputMismatchException e){
+                                                        System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                                        entrada.nextLine();
                                                     }
-                                                case 2:
-                                                    if(tipoCliente.equalsIgnoreCase("B") || tipoCliente.equalsIgnoreCase("C")){
-                                                        System.out.println("\n===============================");
-                                                        System.out.println("  Supercito Morfly | Compras");
-                                                        System.out.println("===============================");
-                                                        System.out.println("");
-                                                        System.out.println("Tipo de Proveedor: "+tipoCliente);
-                                                        System.out.println("Producto Seleccionado: Avena");
-                                                        System.out.println(String.format("Inventario: %.1fkg",inventarioAvena));
-                                                        System.out.println("");
-
-                                                        while(true){
-                                                            try{
-                                                                System.out.print("Ingrese la cantidad en kilogramos: ");
-                                                                cantidadAvena = entrada.nextDouble();
-
-                                                                if(cantidadAvena > 0) {
-                                                                    inventarioAvena += cantidadAvena;
-                                                                    totalCantidadAvena += cantidadAvena;
-                                                                    ventaAvena = (tipoCliente.equalsIgnoreCase("B")) ? totalCantidadAvena*20 : totalCantidadAvena*22;
-                                                                    break;
-                                                                }else{
-                                                                    System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n"); 
-                                                                } 
-                                                            }catch(InputMismatchException e){
-                                                                System.out.println("\n*** Formato Ingresado Invalido ***\n");
-                                                                entrada.nextLine();
-                                                            }
-                                                        }
-                                                        break;
-                                                    }else{
-                                                        System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
-                                                        salirSeccion = true;
-                                                        break;
-                                                    }
-                                                case 3:
-                                                    if(tipoCliente.equalsIgnoreCase("B")){
-                                                        System.out.println("\n===============================");
-                                                        System.out.println("  Supercito Morfly | Compras");
-                                                        System.out.println("===============================");
-                                                        System.out.println("");
-                                                        System.out.println("Tipo de Proveedor: "+tipoCliente);
-                                                        System.out.println("Producto Seleccionado: Trigo");
-                                                        System.out.println(String.format("Inventario: %.1fkg",inventarioTrigo));
-                                                        System.out.println("");
-
-                                                        while(true){
-                                                            try{
-                                                                System.out.print("Ingrese la cantidad en kilogramos: ");
-                                                                cantidadTrigo = entrada.nextDouble();
-
-                                                                if(cantidadTrigo > 0) {
-                                                                    inventarioTrigo += cantidadTrigo;
-                                                                    totalCantidadTrigo += cantidadTrigo;
-                                                                    ventaTrigo = totalCantidadTrigo*30;
-                                                                    break;
-                                                                }else{
-                                                                    System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n"); 
-                                                                } 
-                                                            }catch(InputMismatchException e){
-                                                                System.out.println("\n*** Formato Ingresado Invalido ***\n");
-                                                                entrada.nextLine();
-                                                            }
-                                                        }
-                                                        break;
-                                                    }else{
-                                                        System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
-                                                        salirSeccion = true;
-                                                        break;
-                                                    }
-                                                case 4:
-                                                    if(tipoCliente.equalsIgnoreCase("A")){
-                                                        System.out.println("\n===============================");
-                                                        System.out.println("  Supercito Morfly | Compras");
-                                                        System.out.println("===============================");
-                                                        System.out.println("");
-                                                        System.out.println("Tipo de Proveedor: "+tipoCliente);
-                                                        System.out.println("Producto Seleccionado: Maiz");
-                                                        System.out.println(String.format("Inventario: %.1fkg",inventarioMaiz));
-                                                        System.out.println("");
-
-                                                        while(true){
-                                                            try{
-                                                                System.out.print("Ingrese la cantidad en kilogramos: ");
-                                                                cantidadMaiz = entrada.nextDouble();
-
-                                                                if(cantidadMaiz > 0) {
-                                                                    inventarioMaiz += cantidadMaiz;
-                                                                    totalCantidadMaiz += cantidadMaiz;
-                                                                    ventaMaiz = totalCantidadMaiz*18;
-                                                                    break;
-                                                                }else{
-                                                                    System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n"); 
-                                                                } 
-                                                            }catch(InputMismatchException e){
-                                                                System.out.println("\n*** Formato Ingresado Invalido ***\n");
-                                                                entrada.nextLine();
-                                                            }
-                                                        }
-                                                        break;
-                                                    }else{
-                                                        System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
-                                                        salirSeccion = true;
-                                                        break;
-                                                    }
-                                                case 5:
-                                                    System.out.println("\n*** Has salido de Compras ***\n");
-                                                    salirSeccion = true;
-                                                    break;
-                                                default:
-                                                    System.out.println("\n*** Este codigo de producto no existe ***");
-                                                    break;
-                                            }
-
-                                            if(salirSeccion){
+                                                }
+                                                break;
+                                            }else{
+                                                System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
+                                                salirSeccion = true;
                                                 break;
                                             }
+                                        case 2:
+                                            if(tipoCliente.equalsIgnoreCase("B") || tipoCliente.equalsIgnoreCase("C")){
+                                                System.out.println("\n===============================");
+                                                System.out.println("  Supercito Morfly | Compras");
+                                                System.out.println("===============================");
+                                                System.out.println("");
+                                                System.out.println("Tipo de Proveedor: "+tipoCliente);
+                                                System.out.println("Producto Seleccionado: Avena");
+                                                System.out.println(String.format("Inventario: %.1fkg",inventarioAvena));
+                                                System.out.println("");
 
-                                            // Proceso de facturacion
-                                            subtotalVentas = ventaAzucar+ventaAvena+ventaTrigo+ventaMaiz;
-                                            if(subtotalVentas <= caja){
-                                                if(cantidadAzucar > 0 || cantidadAvena > 0 || cantidadTrigo > 0 || cantidadMaiz > 0){
-                                                    idFacturacion += 1;
-                                                    System.out.println("==========================================================");
-                                                    System.out.println("             Supercito Morfly | Facturacion");
-                                                    System.out.println("==========================================================");
-                                                    System.out.println("");
-                                                    System.out.println("ID Factura: "+idFacturacion);
-                                                    System.out.println("Tipo de Cliente: "+tipoCliente);
-                                                    System.out.println("");
-                                                    System.out.println("Codigo     Nombre      Cantidad     Precio     Total");
+                                                while(true){
+                                                    try{
+                                                        System.out.print("Ingrese la cantidad en kilogramos: ");
+                                                        cantidadAvena = entrada.nextDouble();
 
-                                                    if(cantidadAzucar > 0){
-                                                        System.out.println(String.format("  1        Azucar        %.1fkg      Lps.25.00  Lps.%.2f",totalCantidadAzucar,ventaAzucar));
-                                                        cantidadAzucar = 0;
-                                                        totalCantidadAzucar = 0;
-                                                    }
-                                                    if(cantidadAvena > 0){
-                                                        if(tipoCliente.equalsIgnoreCase("B")){
-                                                            System.out.println(String.format("  2        Avena         %.1fkg      Lps.20.00  Lps.%.2f",totalCantidadAvena,ventaAvena));
+                                                        if(cantidadAvena > 0) {
+                                                            inventarioAvena += cantidadAvena;
+                                                            totalCantidadAvena += cantidadAvena;
+                                                            ventaAvena = (tipoCliente.equalsIgnoreCase("B")) ? totalCantidadAvena*20 : totalCantidadAvena*22;
+                                                            break;
                                                         }else{
-                                                            System.out.println(String.format("  2        Avena         %.1fkg      Lps.22.00  Lps.%.2f",totalCantidadAvena,ventaAvena));
-                                                        }
-                                                        cantidadAvena = 0;
-                                                        totalCantidadAvena = 0;
+                                                            System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n"); 
+                                                        } 
+                                                    }catch(InputMismatchException e){
+                                                        System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                                        entrada.nextLine();
                                                     }
-                                                    if(cantidadTrigo > 0){
-                                                        System.out.println(String.format("  3        Trigo         %.1fkg      Lps.30.00  Lps.%.2f",totalCantidadTrigo,ventaTrigo));
-                                                        cantidadTrigo = 0;
-                                                        totalCantidadTrigo = 0;
-                                                    }
-                                                    if(cantidadMaiz > 0){
-                                                        System.out.println(String.format("  2        Maiz          %.1fkg      Lps.18.00  Lps.%.2f",totalCantidadMaiz,ventaMaiz));
-                                                        cantidadMaiz = 0;
-                                                        totalCantidadMaiz = 0;
-                                                    }
-                                                    ventaAzucar = 0; ventaAvena = 0; ventaTrigo = 0; ventaMaiz = 0;
-                                                    totalCompras = subtotalVentas;
-                                                    System.out.println(String.format("\nTotal: L.%.2f",totalCompras));
-                                                    System.out.println("==========================================================\n");
-                                                    caja -= totalCompras; // Se le resta el total de la compra a la caja
-                                                    margenCompras += totalCompras; // Contador del margen de ventas para seccion de Reportes
-                                                    cantidadCompras++; // Contador de compras realizadas para la seccion de Reportes
-                                                    
-                                                    // Chequeo de la mayor compra
-                                                    if(totalCompras >= compraMayor){
-                                                        compraMayor = totalCompras;
-                                                    }
-                                                    
-                                                    salirSeccion = true; // Poner fin ciclo de Compras
-                                                }else{
-                                                    salirSeccion = true; // Para salir del ciclo de compras sin mostrar factura si no compro productos
                                                 }
+                                                break;
                                             }else{
-                                                System.out.println("\n*** Saldo Insuficiente para pagar esta compra ***\n");
-                                                System.out.println(String.format("Saldo en Caja: Lps.%.2f",caja));
-                                                System.out.println(String.format("Total de Compra: Lps.%.2f\n",subtotalVentas));
-                                                
-                                                // Reseteo de todas las variables
-                                                inventarioAzucar -= cantidadAzucar; inventarioAvena -= cantidadAvena; inventarioTrigo -= cantidadTrigo; inventarioMaiz -= cantidadMaiz;
-                                                cantidadAzucar = 0; cantidadAvena = 0; cantidadTrigo = 0; cantidadMaiz = 0;
-                                                totalCantidadAzucar = 0; totalCantidadAvena = 0; totalCantidadTrigo = 0; totalCantidadMaiz = 0;
-                                                ventaAzucar = 0; ventaAvena = 0; ventaTrigo = 0; ventaMaiz = 0;
+                                                System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
                                                 salirSeccion = true;
+                                                break;
                                             }
-                                    }else{
-                                        System.out.println("\n*** Este tipo de cliente no existe ***");
+                                        case 3:
+                                            if(tipoCliente.equalsIgnoreCase("B")){
+                                                System.out.println("\n===============================");
+                                                System.out.println("  Supercito Morfly | Compras");
+                                                System.out.println("===============================");
+                                                System.out.println("");
+                                                System.out.println("Tipo de Proveedor: "+tipoCliente);
+                                                System.out.println("Producto Seleccionado: Trigo");
+                                                System.out.println(String.format("Inventario: %.1fkg",inventarioTrigo));
+                                                System.out.println("");
+
+                                                while(true){
+                                                    try{
+                                                        System.out.print("Ingrese la cantidad en kilogramos: ");
+                                                        cantidadTrigo = entrada.nextDouble();
+
+                                                        if(cantidadTrigo > 0) {
+                                                            inventarioTrigo += cantidadTrigo;
+                                                            totalCantidadTrigo += cantidadTrigo;
+                                                            ventaTrigo = totalCantidadTrigo*30;
+                                                            break;
+                                                        }else{
+                                                            System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n"); 
+                                                        } 
+                                                    }catch(InputMismatchException e){
+                                                        System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                                        entrada.nextLine();
+                                                    }
+                                                }
+                                                break;
+                                            }else{
+                                                System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
+                                                salirSeccion = true;
+                                                break;
+                                            }
+                                        case 4:
+                                            if(tipoCliente.equalsIgnoreCase("A")){
+                                                System.out.println("\n===============================");
+                                                System.out.println("  Supercito Morfly | Compras");
+                                                System.out.println("===============================");
+                                                System.out.println("");
+                                                System.out.println("Tipo de Proveedor: "+tipoCliente);
+                                                System.out.println("Producto Seleccionado: Maiz");
+                                                System.out.println(String.format("Inventario: %.1fkg",inventarioMaiz));
+                                                System.out.println("");
+
+                                                while(true){
+                                                    try{
+                                                        System.out.print("Ingrese la cantidad en kilogramos: ");
+                                                        cantidadMaiz = entrada.nextDouble();
+
+                                                        if(cantidadMaiz > 0) {
+                                                            inventarioMaiz += cantidadMaiz;
+                                                            totalCantidadMaiz += cantidadMaiz;
+                                                            ventaMaiz = totalCantidadMaiz*18;
+                                                            break;
+                                                        }else{
+                                                            System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n"); 
+                                                        } 
+                                                    }catch(InputMismatchException e){
+                                                        System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                                        entrada.nextLine();
+                                                    }
+                                                }
+                                                break;
+                                            }else{
+                                                System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
+                                                salirSeccion = true;
+                                                break;
+                                            }
+                                        case 5:
+                                            System.out.println("\n*** Has salido de Compras ***\n");
+                                            salirSeccion = true;
+                                            break;
+                                        default:
+                                            System.out.println("\n*** Este codigo de producto no existe ***");
+                                            break;
                                     }
+
+                                    if(salirSeccion){
+                                        break;
+                                    }
+
+                                    // Proceso de facturacion
+                                    subtotalVentas = ventaAzucar+ventaAvena+ventaTrigo+ventaMaiz;
+                                    if(subtotalVentas <= caja){
+                                        if(cantidadAzucar > 0 || cantidadAvena > 0 || cantidadTrigo > 0 || cantidadMaiz > 0){
+                                            idFacturacion += 1;
+                                            System.out.println("==========================================================");
+                                            System.out.println("             Supercito Morfly | Facturacion");
+                                            System.out.println("==========================================================");
+                                            System.out.println("");
+                                            System.out.println("ID Factura: "+idFacturacion);
+                                            System.out.println("Tipo de Cliente: "+tipoCliente);
+                                            System.out.println("");
+                                            System.out.println("Codigo     Nombre      Cantidad     Precio     Total");
+
+                                            if(cantidadAzucar > 0){
+                                                System.out.println(String.format("  1        Azucar        %.1fkg      Lps.25.00  Lps.%.2f",totalCantidadAzucar,ventaAzucar));
+                                                cantidadAzucar = 0;
+                                                totalCantidadAzucar = 0;
+                                            }
+                                            if(cantidadAvena > 0){
+                                                if(tipoCliente.equalsIgnoreCase("B")){
+                                                    System.out.println(String.format("  2        Avena         %.1fkg      Lps.20.00  Lps.%.2f",totalCantidadAvena,ventaAvena));
+                                                }else{
+                                                    System.out.println(String.format("  2        Avena         %.1fkg      Lps.22.00  Lps.%.2f",totalCantidadAvena,ventaAvena));
+                                                }
+                                                cantidadAvena = 0;
+                                                totalCantidadAvena = 0;
+                                            }
+                                            if(cantidadTrigo > 0){
+                                                System.out.println(String.format("  3        Trigo         %.1fkg      Lps.30.00  Lps.%.2f",totalCantidadTrigo,ventaTrigo));
+                                                cantidadTrigo = 0;
+                                                totalCantidadTrigo = 0;
+                                            }
+                                            if(cantidadMaiz > 0){
+                                                System.out.println(String.format("  2        Maiz          %.1fkg      Lps.18.00  Lps.%.2f",totalCantidadMaiz,ventaMaiz));
+                                                cantidadMaiz = 0;
+                                                totalCantidadMaiz = 0;
+                                            }
+                                            ventaAzucar = 0; ventaAvena = 0; ventaTrigo = 0; ventaMaiz = 0;
+                                            totalCompras = subtotalVentas;
+                                            System.out.println(String.format("\nTotal: L.%.2f",totalCompras));
+                                            System.out.println("==========================================================\n");
+                                            caja -= totalCompras; // Se le resta el total de la compra a la caja
+                                            margenCompras += totalCompras; // Contador del margen de ventas para seccion de Reportes
+                                            cantidadCompras++; // Contador de compras realizadas para la seccion de Reportes
+
+                                            // Chequeo de la mayor compra
+                                            if(totalCompras >= compraMayor){
+                                                compraMayor = totalCompras;
+                                            }
+
+                                            salirSeccion = true; // Poner fin ciclo de Compras
+                                        }else{
+                                            salirSeccion = true; // Para salir del ciclo de compras sin mostrar factura si no compro productos
+                                        }
+                                    }else{
+                                        System.out.println("\n*** Saldo Insuficiente para pagar esta compra ***\n");
+                                        System.out.println(String.format("Saldo en Caja: Lps.%.2f",caja));
+                                        System.out.println(String.format("Total de Compra: Lps.%.2f\n",subtotalVentas));
+
+                                        // Reseteo de todas las variables
+                                        inventarioAzucar -= cantidadAzucar; inventarioAvena -= cantidadAvena; inventarioTrigo -= cantidadTrigo; inventarioMaiz -= cantidadMaiz;
+                                        cantidadAzucar = 0; cantidadAvena = 0; cantidadTrigo = 0; cantidadMaiz = 0;
+                                        totalCantidadAzucar = 0; totalCantidadAvena = 0; totalCantidadTrigo = 0; totalCantidadMaiz = 0;
+                                        ventaAzucar = 0; ventaAvena = 0; ventaTrigo = 0; ventaMaiz = 0;
+                                        salirSeccion = true;
+                                    }
+                                }else{
+                                    System.out.println("\n*** Este tipo de cliente no existe ***");
                                 }
-                                break;
-                        }else{
-                            System.out.println("\n            **    ERROR    **");
-                            System.out.println("No puedes ingresar porque no has abierto caja.\n");
+                            }
                             break;
-                        }
+                    }else{
+                        System.out.println("\n            **    ERROR    **");
+                        System.out.println("No puedes ingresar porque no has abierto caja.\n");
+                        break;
+                    }
                     case 4: // Reportes
                         
                         //Calculos
