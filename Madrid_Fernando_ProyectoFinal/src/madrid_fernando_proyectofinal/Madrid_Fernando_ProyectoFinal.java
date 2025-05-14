@@ -5,23 +5,30 @@ import java.util.InputMismatchException;
 
 public class Madrid_Fernando_ProyectoFinal {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         
         Scanner entrada = new Scanner(System.in).useDelimiter("\n");
         
         // Variables
-        boolean abrirCaja = false, salirVentas;
-        double caja = 0, adicionCaja = 0,
+        boolean abrirCaja = false, salirSeccion; // Booleanos generales
+        double caja = 0, adicionCaja = 0, // Seccion de Abrir Caja
+                
+               // Variables para Seccion de Ventas y Compras 
                cantidadAzucar = 0, cantidadAvena = 0, cantidadTrigo = 0, cantidadMaiz = 0, 
                totalCantidadAzucar = 0, totalCantidadAvena = 0, totalCantidadTrigo = 0, totalCantidadMaiz = 0, 
                ventaAzucar = 0, ventaAvena = 0, ventaTrigo = 0, ventaMaiz = 0,
-               compraAzucar = 0, compraAvena = 0, compraTrigo = 0, compraMaiz = 0,
-               descuentoAplicadoVentas = 0, impuestoVentas, totalVentas,
-               subtotalVentas,
-               inventarioAzucar = 0, inventarioAvena = 0, inventarioTrigo = 0, inventarioMaiz = 0;
+               descuentoAplicadoVentas = 0, impuestoVentas, totalVentas = 0, totalCompras = 0, subtotalVentas,
+               inventarioAzucar = 0, inventarioAvena = 0, inventarioTrigo = 0, inventarioMaiz = 0,
+                
+               // Variables para Seccion de Reportes
+               estrellaAzucar = 0, estrellaAvena = 0, estrellaTrigo = 0, estrellaMaiz = 0,
+               margenVentas = 0, margenCompras = 0, promedioVentasCompras = 0, ventaMayor = 0, compraMayor = 0, cantidadEstrella = 0;
         
-        int opcion = 0, codigo, idFacturacion = 0, descuentoVentas;
-        String tipoCliente, seguirComprando;
+        // Variables para seccion de Ventas y Compras
+        int opcion = 0, codigo, idFacturacion = 0, descuentoVentas, cantidadVentas = 0, cantidadCompras = 0; 
+        
+        // Strings generales
+        String tipoCliente, seguirComprando, margenTotal = "", productoEstrella = "";
         
         while(opcion != 6) {
             System.out.println("===============================");
@@ -48,6 +55,8 @@ public class Madrid_Fernando_ProyectoFinal {
                         System.out.println("  Supercito Morfly | Caja");
                         System.out.println("===============================");
                         System.out.println("");
+                        
+                        // Chequeo sobre si la caja esta abierta o no
                         if(!abrirCaja){
                             while(true){
                                 System.out.print("Ingrese la cantidad que desea adicionar: ");
@@ -72,7 +81,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                     entrada.nextLine();
                                 }
                             }
-                        }else{
+                        }else{ // Proceso de la caja ya estando abierta
                             while (true){
                                 System.out.print("Ingrese la cantidad que desea adicionar: ");
                                 
@@ -100,8 +109,8 @@ public class Madrid_Fernando_ProyectoFinal {
                     case 2: // Seccion de Ventas
                         if(abrirCaja){
                             if(inventarioAzucar > 0 || inventarioAvena > 0 || inventarioTrigo > 0 || inventarioMaiz > 0){
-                                salirVentas = false;
-                                while(!salirVentas) {
+                                salirSeccion = false;
+                                while(!salirSeccion) {
                                     System.out.println("\n===============================");
                                     System.out.println("  Supercito Morfly | Ventas");
                                     System.out.println("===============================");
@@ -151,6 +160,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                             inventarioAzucar -= cantidadAzucar;
                                                                             totalCantidadAzucar += cantidadAzucar;
                                                                             ventaAzucar = totalCantidadAzucar*30;
+                                                                            estrellaAzucar += totalCantidadAzucar;
                                                                             break;
                                                                         }else{
                                                                             System.out.println("\n*** No hay suficiente cantidad de Azucar ***\n");
@@ -170,7 +180,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                         }
                                                     }else{
                                                         System.out.println("\n*** Este tipo de cliente no puede comprar este producto ***\n");
-                                                        salirVentas = true;
+                                                        salirSeccion = true;
                                                         break;
                                                     }
                                                 case 2:
@@ -194,7 +204,8 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                         if(inventarioAvena >= cantidadAvena){
                                                                             inventarioAvena -= cantidadAvena;
                                                                             totalCantidadAvena += cantidadAvena;
-                                                                            ventaAvena = totalCantidadAvena*30;
+                                                                            ventaAvena = totalCantidadAvena*25;
+                                                                            estrellaAvena += totalCantidadAvena;
                                                                             break;
                                                                         }else{
                                                                             System.out.println("\n*** No hay suficiente cantidad de Avena ***\n");
@@ -214,7 +225,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                         }
                                                     }else{
                                                         System.out.println("\n*** Este tipo de cliente no puede comprar este producto ***\n");
-                                                        salirVentas = true;
+                                                        salirSeccion = true;
                                                         break;
                                                     }
                                                 case 3:
@@ -238,7 +249,8 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                         if(inventarioTrigo >= cantidadTrigo){
                                                                             inventarioTrigo -= cantidadTrigo;
                                                                             totalCantidadTrigo += cantidadTrigo;
-                                                                            ventaTrigo = totalCantidadTrigo*30;
+                                                                            ventaTrigo = totalCantidadTrigo*32;
+                                                                            estrellaTrigo += totalCantidadTrigo;
                                                                             break;
                                                                         }else{
                                                                             System.out.println("\n*** No hay suficiente cantidad de Trigo ***\n");
@@ -258,7 +270,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                         }
                                                     }else{
                                                         System.out.println("\n*** Este tipo de cliente no puede comprar este producto ***\n");
-                                                        salirVentas = true;
+                                                        salirSeccion = true;
                                                         break;
                                                     }
                                                 case 4:
@@ -282,7 +294,8 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                         if(inventarioMaiz >= cantidadMaiz){
                                                                             inventarioMaiz -= cantidadMaiz;
                                                                             totalCantidadMaiz += cantidadMaiz;
-                                                                            ventaMaiz = totalCantidadMaiz*30;
+                                                                            ventaMaiz = totalCantidadMaiz*20;
+                                                                            estrellaMaiz += totalCantidadMaiz;
                                                                             break;
                                                                         }else{
                                                                             System.out.println("\n*** No hay suficiente cantidad de Maiz ***\n");
@@ -302,7 +315,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                         }
                                                     }else{
                                                         System.out.println("\n*** Este tipo de cliente no puede comprar este producto ***\n");
-                                                        salirVentas = true;
+                                                        salirSeccion = true;
                                                         break;
                                                     }
                                                 case 5:
@@ -313,10 +326,10 @@ public class Madrid_Fernando_ProyectoFinal {
                                                         inventarioMaiz += cantidadMaiz;
                                                         cantidadAzucar = 0; cantidadAvena = 0; cantidadTrigo = 0; cantidadMaiz = 0;
                                                         System.out.println("\n*** Has salido de Ventas ***\n");
-                                                        salirVentas = true;
+                                                        salirSeccion = true;
                                                         break;
                                                     }else{
-                                                        salirVentas = true;
+                                                        salirSeccion = true;
                                                         break;
                                                     }
                                                 default:
@@ -324,7 +337,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                     break;
                                             }
 
-                                            if(salirVentas){
+                                            if(salirSeccion){ // Chequeo cuando se sale de ventas sin realizar ninguna venta
                                                 break;
                                             }
 
@@ -383,10 +396,32 @@ public class Madrid_Fernando_ProyectoFinal {
                                                     System.out.println(String.format("Impuesto 7%%: L.%.2f",impuestoVentas));
                                                     System.out.println(String.format("Total: L.%.2f",totalVentas));
                                                     System.out.println("==========================================================\n");
-                                                    caja += totalVentas;
-                                                    salirVentas = true; // Poner fin ciclo de Ventas
+                                                    caja += totalVentas; // Agregar el total vendido a la caja
+                                                    margenVentas += totalVentas; // Contador del margen de ventas para seccion de Reportes
+                                                    cantidadVentas++; // Contador de ventas realizadas para seccion de Reportes
+                                                    
+                                                    // Chequeo 
+                                                    if(totalVentas >= ventaMayor){
+                                                        ventaMayor = totalVentas;
+                                                    }
+                                                    
+                                                    if(estrellaAzucar > estrellaAvena && estrellaAzucar > estrellaTrigo && estrellaAzucar > estrellaMaiz){
+                                                        productoEstrella = "Azucar";
+                                                        cantidadEstrella = estrellaAzucar;
+                                                    }else if(estrellaAvena > estrellaAzucar && estrellaAvena > estrellaTrigo && estrellaAvena > estrellaMaiz){
+                                                        productoEstrella = "Avena";
+                                                        cantidadEstrella = estrellaAvena;
+                                                    }else if(estrellaTrigo > estrellaAzucar && estrellaTrigo > estrellaAvena && estrellaTrigo > estrellaMaiz){
+                                                        productoEstrella = "Trigo";
+                                                        cantidadEstrella = estrellaTrigo;
+                                                    }else{
+                                                        productoEstrella = "Maiz";
+                                                        cantidadEstrella = estrellaMaiz;
+                                                    }
+                                                    
+                                                    salirSeccion = true; // Poner fin ciclo de Ventas
                                                 }else{
-                                                    salirVentas = true; // Para salir del ciclo de ventas sin mostrar factura si no compro productos
+                                                    salirSeccion = true; // Para salir del ciclo de ventas sin mostrar factura si no compro productos
                                                 }
                                             }
                                         }while(!seguirComprando.equalsIgnoreCase("No")); // Fin del Do While luego de facturacion
@@ -407,8 +442,8 @@ public class Madrid_Fernando_ProyectoFinal {
                         }
                     case 3: // Compras
                         if(abrirCaja){
-                                salirVentas = false;
-                                while(!salirVentas) {
+                                salirSeccion = false;
+                                while(!salirSeccion) {
                                     System.out.println("\n===============================");
                                     System.out.println("  Supercito Morfly | Compras");
                                     System.out.println("===============================");
@@ -467,7 +502,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                         break;
                                                     }else{
                                                         System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
-                                                        salirVentas = true;
+                                                        salirSeccion = true;
                                                         break;
                                                     }
                                                 case 2:
@@ -489,7 +524,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                 if(cantidadAvena > 0) {
                                                                     inventarioAvena += cantidadAvena;
                                                                     totalCantidadAvena += cantidadAvena;
-                                                                    ventaAvena = (tipoCliente.equalsIgnoreCase("B")) ? totalCantidadAvena*25 : totalCantidadAvena*22;
+                                                                    ventaAvena = (tipoCliente.equalsIgnoreCase("B")) ? totalCantidadAvena*20 : totalCantidadAvena*22;
                                                                     break;
                                                                 }else{
                                                                     System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n"); 
@@ -502,7 +537,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                         break;
                                                     }else{
                                                         System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
-                                                        salirVentas = true;
+                                                        salirSeccion = true;
                                                         break;
                                                     }
                                                 case 3:
@@ -537,7 +572,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                         break;
                                                     }else{
                                                         System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
-                                                        salirVentas = true;
+                                                        salirSeccion = true;
                                                         break;
                                                     }
                                                 case 4:
@@ -572,19 +607,19 @@ public class Madrid_Fernando_ProyectoFinal {
                                                         break;
                                                     }else{
                                                         System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
-                                                        salirVentas = true;
+                                                        salirSeccion = true;
                                                         break;
                                                     }
                                                 case 5:
                                                     System.out.println("\n*** Has salido de Compras ***\n");
-                                                    salirVentas = true;
+                                                    salirSeccion = true;
                                                     break;
                                                 default:
                                                     System.out.println("\n*** Este codigo de producto no existe ***");
                                                     break;
                                             }
 
-                                            if(salirVentas){
+                                            if(salirSeccion){
                                                 break;
                                             }
 
@@ -603,13 +638,13 @@ public class Madrid_Fernando_ProyectoFinal {
                                                     System.out.println("Codigo     Nombre      Cantidad     Precio     Total");
 
                                                     if(cantidadAzucar > 0){
-                                                        System.out.println(String.format("  1        Azucar        %.1fkg      Lps.30.00  Lps.%.2f",totalCantidadAzucar,ventaAzucar));
+                                                        System.out.println(String.format("  1        Azucar        %.1fkg      Lps.25.00  Lps.%.2f",totalCantidadAzucar,ventaAzucar));
                                                         cantidadAzucar = 0;
                                                         totalCantidadAzucar = 0;
                                                     }
                                                     if(cantidadAvena > 0){
                                                         if(tipoCliente.equalsIgnoreCase("B")){
-                                                            System.out.println(String.format("  2        Avena         %.1fkg      Lps.25.00  Lps.%.2f",totalCantidadAvena,ventaAvena));
+                                                            System.out.println(String.format("  2        Avena         %.1fkg      Lps.20.00  Lps.%.2f",totalCantidadAvena,ventaAvena));
                                                         }else{
                                                             System.out.println(String.format("  2        Avena         %.1fkg      Lps.22.00  Lps.%.2f",totalCantidadAvena,ventaAvena));
                                                         }
@@ -617,31 +652,43 @@ public class Madrid_Fernando_ProyectoFinal {
                                                         totalCantidadAvena = 0;
                                                     }
                                                     if(cantidadTrigo > 0){
-                                                        System.out.println(String.format("  3        Trigo         %.1fkg      Lps.32.00  Lps.%.2f",totalCantidadTrigo,ventaTrigo));
+                                                        System.out.println(String.format("  3        Trigo         %.1fkg      Lps.30.00  Lps.%.2f",totalCantidadTrigo,ventaTrigo));
                                                         cantidadTrigo = 0;
                                                         totalCantidadTrigo = 0;
                                                     }
                                                     if(cantidadMaiz > 0){
-                                                        System.out.println(String.format("  2        Maiz          %.1fkg      Lps.20.00  Lps.%.2f",totalCantidadMaiz,ventaMaiz));
+                                                        System.out.println(String.format("  2        Maiz          %.1fkg      Lps.18.00  Lps.%.2f",totalCantidadMaiz,ventaMaiz));
                                                         cantidadMaiz = 0;
                                                         totalCantidadMaiz = 0;
                                                     }
                                                     ventaAzucar = 0; ventaAvena = 0; ventaTrigo = 0; ventaMaiz = 0;
-                                                    totalVentas = subtotalVentas;
-                                                    System.out.println(String.format("\nTotal: L.%.2f",totalVentas));
+                                                    totalCompras = subtotalVentas;
+                                                    System.out.println(String.format("\nTotal: L.%.2f",totalCompras));
                                                     System.out.println("==========================================================\n");
-                                                    caja -= totalVentas;
-                                                    salirVentas = true; // Poner fin ciclo de Compras
+                                                    caja -= totalCompras; // Se le resta el total de la compra a la caja
+                                                    margenCompras += totalCompras; // Contador del margen de ventas para seccion de Reportes
+                                                    cantidadCompras++; // Contador de compras realizadas para la seccion de Reportes
+                                                    
+                                                    // Chequeo de la mayor compra
+                                                    if(totalCompras >= compraMayor){
+                                                        compraMayor = totalCompras;
+                                                    }
+                                                    
+                                                    salirSeccion = true; // Poner fin ciclo de Compras
                                                 }else{
-                                                    salirVentas = true; // Para salir del ciclo de compras sin mostrar factura si no compro productos
+                                                    salirSeccion = true; // Para salir del ciclo de compras sin mostrar factura si no compro productos
                                                 }
                                             }else{
                                                 System.out.println("\n*** Saldo Insuficiente para pagar esta compra ***\n");
                                                 System.out.println(String.format("Saldo en Caja: Lps.%.2f",caja));
                                                 System.out.println(String.format("Total de Compra: Lps.%.2f\n",subtotalVentas));
+                                                
+                                                // Reseteo de todas las variables
                                                 inventarioAzucar -= cantidadAzucar; inventarioAvena -= cantidadAvena; inventarioTrigo -= cantidadTrigo; inventarioMaiz -= cantidadMaiz;
                                                 cantidadAzucar = 0; cantidadAvena = 0; cantidadTrigo = 0; cantidadMaiz = 0;
-                                                salirVentas = true;
+                                                totalCantidadAzucar = 0; totalCantidadAvena = 0; totalCantidadTrigo = 0; totalCantidadMaiz = 0;
+                                                ventaAzucar = 0; ventaAvena = 0; ventaTrigo = 0; ventaMaiz = 0;
+                                                salirSeccion = true;
                                             }
                                     }else{
                                         System.out.println("\n*** Este tipo de cliente no existe ***");
@@ -654,6 +701,27 @@ public class Madrid_Fernando_ProyectoFinal {
                             break;
                         }
                     case 4: // Reportes
+                        
+                        //Calculos
+                        margenTotal = (margenVentas > margenCompras) ? String.format("| Margen de Ganancia: Lps.%.2f",margenVentas-margenCompras) : String.format("| Margen de Ganancia: Lps.0.00\n| Perdida: Lps.%.2f",margenCompras-margenVentas);
+                        promedioVentasCompras = (margenVentas+margenCompras)/2;
+                        
+                        System.out.println("\n====================================");
+                        System.out.println("    Supercito Morfly | Reportes");
+                        System.out.println("====================================\n");
+                        System.out.println(String.format("| Cantidad en Caja: Lps.%.2f\n",caja));
+                        System.out.println("| Ventas Realizadas: "+cantidadVentas);
+                        System.out.println(String.format("| Total Ventas: Lps.%.2f\n", margenVentas));
+                        System.out.println("| Compras Realizadas: "+cantidadCompras);
+                        System.out.println(String.format("| Total Compras: Lps.%.2f\n", margenCompras));
+                        System.out.println(margenTotal+"\n");
+                        System.out.println(String.format("| Promedio Ventas y Compras: Lps.%.2f\n",promedioVentasCompras));
+                        System.out.println(String.format("| Venta con Mayor Ganancia: Lps.%.2f",ventaMayor));
+                        System.out.println(String.format("| Compra con Mayor Gasto: Lps.%.2f\n",compraMayor));
+                        System.out.println("| Producto Estrella: "+productoEstrella);
+                        System.out.println(String.format("| Cantidad Vendida: %.1fkg\n",cantidadEstrella));
+                        System.out.println("====================================\n");
+                        Thread.sleep(5000);
                         break;
                     case 5: // Cierre de Caja
                         break;
