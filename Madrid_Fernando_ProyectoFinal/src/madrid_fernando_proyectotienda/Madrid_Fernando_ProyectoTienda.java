@@ -45,7 +45,7 @@ public class Madrid_Fernando_ProyectoTienda {
             System.out.println("5. Cierre de Caja");
             System.out.println("6. Salir del Sistema");
             System.out.println("");
-            System.out.print("Elige una opcion: ");
+            System.out.print("Elige el numero de opcion: ");
 
             try {
                 opcion = entrada.nextInt();
@@ -150,7 +150,7 @@ public class Madrid_Fernando_ProyectoTienda {
                         break;
                     case 2: // Seccion de Ventas
                         if (abrirCaja) {
-                            if (inventarioAzucar > 0 || inventarioAvena > 0 || inventarioTrigo > 0 || inventarioMaiz > 0) {
+                            if (inventarioAzucar > 0 || inventarioAvena > 0 || inventarioTrigo > 0 || inventarioMaiz > 0) { // Chequeo de que si hay producto en el inventario
                                 salirSeccion = false;
                                 while (!salirSeccion) {
                                     System.out.println("\n===============================");
@@ -160,7 +160,7 @@ public class Madrid_Fernando_ProyectoTienda {
                                     System.out.print("Ingrese el tipo de cliente (A, B, C): ");
                                     tipoCliente = entrada.next().toUpperCase().strip();
 
-                                    if (tipoCliente.equalsIgnoreCase("A") || tipoCliente.equalsIgnoreCase("B") || tipoCliente.equalsIgnoreCase("C")) {
+                                    if (tipoCliente.equalsIgnoreCase("A") || tipoCliente.equalsIgnoreCase("B") || tipoCliente.equalsIgnoreCase("C")) { // Chequeo de que si el usuario ingreso correcto el tipo de cliente
 
                                         do {
                                             System.out.println("\n=================================");
@@ -208,6 +208,8 @@ public class Madrid_Fernando_ProyectoTienda {
 
                                                                     if (cantidadAzucar > 0) {
                                                                         if (inventarioAzucar >= cantidadAzucar) {
+                                                                            
+                                                                            // Calculos
                                                                             inventarioAzucar -= cantidadAzucar;
                                                                             totalCantidadAzucar += cantidadAzucar;
                                                                             ventaAzucar = totalCantidadAzucar * 30;
@@ -391,6 +393,10 @@ public class Madrid_Fernando_ProyectoTienda {
                                                         inventarioAvena += cantidadAvena;
                                                         inventarioTrigo += cantidadTrigo;
                                                         inventarioMaiz += cantidadMaiz;
+                                                        estrellaAzucar -= totalCantidadAzucar;
+                                                        estrellaAvena -= totalCantidadAzucar;
+                                                        estrellaTrigo -= totalCantidadAzucar;
+                                                        estrellaMaiz -= totalCantidadAzucar;
                                                         cantidadAzucar = 0;
                                                         cantidadAvena = 0;
                                                         cantidadTrigo = 0;
@@ -425,7 +431,7 @@ public class Madrid_Fernando_ProyectoTienda {
                                             // Proceso de facturacion
                                             if (seguirComprando.equalsIgnoreCase("No")) {
                                                 if (cantidadAzucar > 0 || cantidadAvena > 0 || cantidadTrigo > 0 || cantidadMaiz > 0) {
-                                                    System.out.println("==========================================================");
+                                                    System.out.println("\n==========================================================");
                                                     System.out.println("             Supercito Morfly | Facturacion");
                                                     System.out.println("==========================================================");
                                                     System.out.println("");
@@ -487,21 +493,38 @@ public class Madrid_Fernando_ProyectoTienda {
                                                     }
 
                                                     // Chequeo producto estrella
-                                                    if (estrellaAzucar > estrellaAvena && estrellaAzucar > estrellaTrigo && estrellaAzucar > estrellaMaiz) {
-                                                        productoEstrella = "Azucar";
-                                                        cantidadEstrella = estrellaAzucar;
-                                                    } else if (estrellaAvena > estrellaAzucar && estrellaAvena > estrellaTrigo && estrellaAvena > estrellaMaiz) {
-                                                        productoEstrella = "Avena";
+
+                                                    cantidadEstrella = estrellaAzucar;
+                                                    
+                                                    if (estrellaAvena > cantidadEstrella) {
                                                         cantidadEstrella = estrellaAvena;
-                                                    } else if (estrellaTrigo > estrellaAzucar && estrellaTrigo > estrellaAvena && estrellaTrigo > estrellaMaiz) {
-                                                        productoEstrella = "Trigo";
+                                                    }
+                                                    if (estrellaTrigo > cantidadEstrella) {
                                                         cantidadEstrella = estrellaTrigo;
-                                                    } else {
-                                                        productoEstrella = "Maiz";
+                                                    }
+                                                    if (estrellaMaiz > cantidadEstrella) {
                                                         cantidadEstrella = estrellaMaiz;
                                                     }
-                                                    
-                                                    
+
+                                                    productoEstrella = "";
+
+                                                    if (estrellaAzucar == cantidadEstrella) {
+                                                        productoEstrella += "Azucar, ";
+                                                    }
+                                                    if (estrellaAvena == cantidadEstrella) {
+                                                        productoEstrella += "Avena, ";
+                                                    }
+                                                    if (estrellaTrigo == cantidadEstrella) {
+                                                        productoEstrella += "Trigo, ";
+                                                    }
+                                                    if (estrellaMaiz == cantidadEstrella) {
+                                                        productoEstrella += "Maiz, ";
+                                                    }
+
+                                                    if (productoEstrella.endsWith(", ")) {
+                                                        productoEstrella = productoEstrella.substring(0, productoEstrella.length() - 2);
+                                                    }
+
                                                     salirSeccion = true; // Poner fin ciclo de Ventas
                                                 } else {
                                                     salirSeccion = true; // Para salir del ciclo de ventas sin mostrar factura si no compro productos
@@ -592,7 +615,7 @@ public class Madrid_Fernando_ProyectoTienda {
                                                     } else {
                                                         System.out.println("\n*** Este tipo de proveedor no vende este producto ***");
                                                         Thread.sleep(500);
-                                                        break;
+                                                        continue;
                                                     }
                                                 case 2:
                                                     if (tipoCliente.equalsIgnoreCase("B") || tipoCliente.equalsIgnoreCase("C")) {
@@ -701,7 +724,7 @@ public class Madrid_Fernando_ProyectoTienda {
                                                         }
                                                         break;
                                                     } else {
-                                                        System.out.println("\n*** Este tipo de proveedor no vende este producto ***");
+                                                        System.out.println("\n*** Este tipo de proveedor no vende este producto ***\n");
                                                         Thread.sleep(500);
                                                         break;
                                                     }
@@ -731,12 +754,12 @@ public class Madrid_Fernando_ProyectoTienda {
                                     subtotalVentas = ventaAzucar + ventaAvena + ventaTrigo + ventaMaiz;
                                     if (subtotalVentas <= caja) {
                                         if (cantidadAzucar > 0 || cantidadAvena > 0 || cantidadTrigo > 0 || cantidadMaiz > 0) {
-                                            System.out.println("==========================================================");
-                                            System.out.println("             Supercito Morfly | Facturacion");
+                                            System.out.println("\n==========================================================");
+                                            System.out.println("         Supercito Morfly | Facturacion Compras");
                                             System.out.println("==========================================================");
                                             System.out.println("");
                                             System.out.println("ID Factura: " + (idFacturacionCompras++));
-                                            System.out.println("Tipo de Cliente: " + tipoCliente);
+                                            System.out.println("Tipo de Proveedor: " + tipoCliente);
                                             System.out.println("");
                                             System.out.println("Codigo     Nombre      Cantidad     Precio     Total");
 
@@ -828,16 +851,16 @@ public class Madrid_Fernando_ProyectoTienda {
 
                             //Calculos
                             margenTotal = (margenVentas > margenCompras) ? String.format("| Margen de Ganancia: Lps.%.2f", margenVentas - margenCompras) : String.format("| Margen de Ganancia: Lps.0.00\n| Perdida: Lps.%.2f", margenCompras - margenVentas);
-                            
-                            if(margenVentas > 0){
+
+                            if (margenVentas > 0) {
                                 promedioVentas = margenVentas / cantidadVentas;
-                            }else{
+                            } else {
                                 promedioVentas = 0;
                             }
-                            
-                            if(margenCompras > 0){
+
+                            if (margenCompras > 0) {
                                 promedioCompras = margenCompras / cantidadCompras;
-                            }else{
+                            } else {
                                 promedioCompras = 0;
                             }
 
@@ -850,8 +873,8 @@ public class Madrid_Fernando_ProyectoTienda {
                             System.out.println("| Compras Realizadas: " + cantidadCompras);
                             System.out.println(String.format("| Total Compras: Lps.%.2f\n", margenCompras));
                             System.out.println(margenTotal + "\n");
-                            System.out.println(String.format("| Promedio de Ventas: Lps.%.2f",promedioVentas));
-                            System.out.println(String.format("| Promedio de Compras: Lps.%.2f\n",promedioCompras));
+                            System.out.println(String.format("| Promedio de Ventas: Lps.%.2f", promedioVentas));
+                            System.out.println(String.format("| Promedio de Compras: Lps.%.2f\n", promedioCompras));
                             System.out.println(String.format("| Venta con Mayor Ganancia: Lps.%.2f", ventaMayor));
                             System.out.println(String.format("| Compra con Mayor Gasto: Lps.%.2f\n", compraMayor));
                             System.out.println("| Producto Estrella: " + productoEstrella);
@@ -872,21 +895,25 @@ public class Madrid_Fernando_ProyectoTienda {
                                 // Calculos
                                 limiteBanco = caja * 0.60;
 
-                                System.out.println("\n=========================================");
+                                System.out.println("\n==========================================");
                                 System.out.println("    Supercito Morfly | Cierre de Caja");
                                 System.out.println("==========================================\n");
-                                System.out.println(String.format("Cantidad en Caja: Lps.%.2f\n", caja));
                                 System.out.println("Nota: Solo se puede depositar menos o el 60%\nde efectivo que hay en caja.\n");
+                                System.out.println(String.format("| Cantidad en Caja: Lps.%.2f", caja));
+                                System.out.println(String.format("| Cantidad maxima permitida: L.%.2f\n",limiteBanco));
 
                                 while (true) {
                                     try {
                                         System.out.print("Ingrese el efectivo a depositar en el banco: ");
                                         guardarBanco = entrada.nextDouble();
 
-                                        if (guardarBanco <= limiteBanco) {
+                                        if (guardarBanco <= limiteBanco) { // Chequeo deposito en el banco
                                             if (guardarBanco > 0) {
                                                 caja = caja - guardarBanco;
-                                                System.out.println(String.format("\nSe guardo en el banco Lps.%.2f\n", guardarBanco));
+                                                System.out.println("\n=============================================");
+                                                System.out.println("**** Se ha realizado el cierre de caja ****");
+                                                System.out.println(String.format("    Se guardo en el banco Lps.%.2f", guardarBanco));
+                                                System.out.println("=============================================\n");
                                                 cierreCaja = true;
                                                 abrirCaja = false;
                                                 Thread.sleep(1000);
@@ -921,12 +948,12 @@ public class Madrid_Fernando_ProyectoTienda {
                         }
                         break;
                     case 6: // Salir del Sistema
-                        if(!abrirCaja || cierreCaja){
+                        if (!abrirCaja || cierreCaja) {
                             System.out.println("\nQue tenga lindo dia!\n");
                             salirPrograma = true;
                             Thread.sleep(1000);
                             break;
-                        }else{
+                        } else {
                             System.out.println("\n*** No puedes salir si no has cerrado caja ***\n");
                             Thread.sleep(500);
                             break;
