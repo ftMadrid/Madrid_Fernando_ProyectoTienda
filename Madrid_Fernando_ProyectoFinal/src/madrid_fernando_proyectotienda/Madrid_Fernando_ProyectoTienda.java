@@ -394,9 +394,9 @@ public class Madrid_Fernando_ProyectoTienda {
                                                         inventarioTrigo += cantidadTrigo;
                                                         inventarioMaiz += cantidadMaiz;
                                                         estrellaAzucar -= totalCantidadAzucar;
-                                                        estrellaAvena -= totalCantidadAzucar;
-                                                        estrellaTrigo -= totalCantidadAzucar;
-                                                        estrellaMaiz -= totalCantidadAzucar;
+                                                        estrellaAvena -= totalCantidadAvena;
+                                                        estrellaTrigo -= totalCantidadTrigo;
+                                                        estrellaMaiz -= totalCantidadMaiz;
                                                         cantidadAzucar = 0;
                                                         cantidadAvena = 0;
                                                         cantidadTrigo = 0;
@@ -404,7 +404,7 @@ public class Madrid_Fernando_ProyectoTienda {
                                                         totalCantidadAzucar = 0;
                                                         totalCantidadAvena = 0;
                                                         totalCantidadTrigo = 0;
-                                                        totalCantidadAzucar = 0;
+                                                        totalCantidadMaiz = 0;
                                                         System.out.println("\n*** Has salido de Ventas ***\n");
                                                         salirSeccion = true;
                                                         Thread.sleep(500);
