@@ -1,9 +1,9 @@
-package madrid_fernando_proyectofinal;
+package madrid_fernando_proyectotienda;
 
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
-public class Madrid_Fernando_ProyectoFinal {
+public class Madrid_Fernando_ProyectoTienda {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -66,17 +66,18 @@ public class Madrid_Fernando_ProyectoFinal {
                                         if (adicionCaja > 0) {
                                             caja += adicionCaja;
                                             abrirCaja = true;
-                                            System.out.println("");
-                                            System.out.println("Efectivo Adicionado Exitosamente");
-                                            System.out.println(String.format("Cantidad Adicionada: L.%.2f", adicionCaja));
-                                            System.out.println("");
+                                            System.out.println("\nEfectivo Adicionado Exitosamente");
+                                            System.out.println(String.format("Cantidad Adicionada: L.%.2f\n", adicionCaja));
                                             System.out.println("** Se ha abierto caja **\n");
+                                            Thread.sleep(1000);
                                             break;
                                         } else {
                                             System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                            Thread.sleep(500);
                                         }
                                     } catch (InputMismatchException e) {
                                         System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                        Thread.sleep(500);
                                         entrada.nextLine();
                                     }
                                 }
@@ -88,16 +89,17 @@ public class Madrid_Fernando_ProyectoFinal {
                                         if (adicionCaja > 0) {
                                             caja += adicionCaja;
                                             abrirCaja = true;
-                                            System.out.println("");
-                                            System.out.println("Efectivo Adicionado Exitosamente");
-                                            System.out.println(String.format("Cantidad Adicionada: L.%.2f", adicionCaja));
-                                            System.out.println("");
+                                            System.out.println("\nEfectivo Adicionado Exitosamente");
+                                            System.out.println(String.format("Cantidad Adicionada: L.%.2f\n", adicionCaja));
+                                            Thread.sleep(1000);
                                             break;
                                         } else {
                                             System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                            Thread.sleep(500);
                                         }
                                     } catch (InputMismatchException e) {
                                         System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                        Thread.sleep(500);
                                         entrada.nextLine();
                                     }
                                 }
@@ -135,10 +137,13 @@ public class Madrid_Fernando_ProyectoFinal {
                                 ventaTrigo = 0;
                                 ventaMaiz = 0;
 
+                                Thread.sleep(1000);
                                 abrirCaja = true;
+                                cierreCaja = false;
                                 break;
                             } else {
                                 System.out.println("** La caja ya se encuentra abierta **\n");
+                                Thread.sleep(1000);
                                 break;
                             }
                         }
@@ -178,6 +183,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                     break;
                                                 } catch (InputMismatchException e) {
                                                     System.out.println("\n*** Formato Ingresado Invalido ***");
+                                                    Thread.sleep(500);
                                                     entrada.nextLine();
                                                 }
                                             }
@@ -209,22 +215,27 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                             break;
                                                                         } else {
                                                                             System.out.println("\n*** No hay suficiente cantidad de Azucar ***\n");
+                                                                            Thread.sleep(500);
                                                                         }
                                                                     } else {
                                                                         System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                                                        Thread.sleep(500);
                                                                     }
                                                                 } catch (InputMismatchException e) {
                                                                     System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                                                    Thread.sleep(500);
                                                                     entrada.nextLine();
                                                                 }
                                                             }
                                                             break;
                                                         } else {
                                                             System.out.println("\n*** No hay suficiente cantidad de Azucar ***");
+                                                            Thread.sleep(500);
                                                             break;
                                                         }
                                                     } else {
                                                         System.out.println("\n*** Este tipo de cliente no puede comprar este producto ***");
+                                                        Thread.sleep(500);
                                                         break;
                                                     }
                                                 case 2:
@@ -253,22 +264,27 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                             break;
                                                                         } else {
                                                                             System.out.println("\n*** No hay suficiente cantidad de Avena ***\n");
+                                                                            Thread.sleep(500);
                                                                         }
                                                                     } else {
                                                                         System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                                                        Thread.sleep(500);
                                                                     }
                                                                 } catch (InputMismatchException e) {
                                                                     System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                                                    Thread.sleep(500);
                                                                     entrada.nextLine();
                                                                 }
                                                             }
                                                             break;
                                                         } else {
                                                             System.out.println("\n*** No hay suficiente cantidad de Avena ***");
+                                                            Thread.sleep(500);
                                                             break;
                                                         }
                                                     } else {
                                                         System.out.println("\n*** Este tipo de cliente no puede comprar este producto ***");
+                                                        Thread.sleep(500);
                                                         break;
                                                     }
                                                 case 3:
@@ -297,22 +313,27 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                             break;
                                                                         } else {
                                                                             System.out.println("\n*** No hay suficiente cantidad de Trigo ***\n");
+                                                                            Thread.sleep(500);
                                                                         }
                                                                     } else {
                                                                         System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                                                        Thread.sleep(500);
                                                                     }
                                                                 } catch (InputMismatchException e) {
                                                                     System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                                                    Thread.sleep(500);
                                                                     entrada.nextLine();
                                                                 }
                                                             }
                                                             break;
                                                         } else {
                                                             System.out.println("\n*** No hay suficiente cantidad de Trigo ***");
+                                                            Thread.sleep(500);
                                                             break;
                                                         }
                                                     } else {
                                                         System.out.println("\n*** Este tipo de cliente no puede comprar este producto ***");
+                                                        Thread.sleep(500);
                                                         break;
                                                     }
                                                 case 4:
@@ -341,22 +362,27 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                             break;
                                                                         } else {
                                                                             System.out.println("\n*** No hay suficiente cantidad de Maiz ***\n");
+                                                                            Thread.sleep(500);
                                                                         }
                                                                     } else {
                                                                         System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                                                        Thread.sleep(500);
                                                                     }
                                                                 } catch (InputMismatchException e) {
                                                                     System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                                                    Thread.sleep(500);
                                                                     entrada.nextLine();
                                                                 }
                                                             }
                                                             break;
                                                         } else {
                                                             System.out.println("\n*** No hay suficiente cantidad de Maiz ***");
+                                                            Thread.sleep(500);
                                                             break;
                                                         }
                                                     } else {
                                                         System.out.println("\n*** Este tipo de cliente no puede comprar este producto ***");
+                                                        Thread.sleep(500);
                                                         break;
                                                     }
                                                 case 5:
@@ -375,13 +401,17 @@ public class Madrid_Fernando_ProyectoFinal {
                                                         totalCantidadAzucar = 0;
                                                         System.out.println("\n*** Has salido de Ventas ***\n");
                                                         salirSeccion = true;
+                                                        Thread.sleep(500);
                                                         break;
                                                     } else {
+                                                        System.out.println("\n*** Has salido de Ventas ***\n");
+                                                        Thread.sleep(500);
                                                         salirSeccion = true;
                                                         break;
                                                     }
                                                 default:
                                                     System.out.println("\n*** Este codigo de producto no existe ***");
+                                                    Thread.sleep(500);
                                                     break;
                                             }
 
@@ -449,6 +479,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                                     caja += totalVentas; // Agregar el total vendido a la caja
                                                     margenVentas += totalVentas; // Contador del margen de ventas para seccion de Reportes
                                                     cantidadVentas++; // Contador de ventas realizadas para seccion de Reportes
+                                                    Thread.sleep(3000);
 
                                                     // Chequeo producto con mayor venta
                                                     if (totalVentas >= ventaMayor) {
@@ -469,7 +500,8 @@ public class Madrid_Fernando_ProyectoFinal {
                                                         productoEstrella = "Maiz";
                                                         cantidadEstrella = estrellaMaiz;
                                                     }
-
+                                                    
+                                                    
                                                     salirSeccion = true; // Poner fin ciclo de Ventas
                                                 } else {
                                                     salirSeccion = true; // Para salir del ciclo de ventas sin mostrar factura si no compro productos
@@ -479,16 +511,19 @@ public class Madrid_Fernando_ProyectoFinal {
 
                                     } else {
                                         System.out.println("\n*** Este tipo de cliente no existe ***");
+                                        Thread.sleep(500);
                                     }
                                 }
                                 break;
                             } else {
                                 System.out.println("\n*** No dispones de suficientes productos ***\n");
+                                Thread.sleep(500);
                                 break;
                             }
                         } else {
                             System.out.println("\n            **    ERROR    **");
                             System.out.println("No puedes ingresar porque no has abierto caja.\n");
+                            Thread.sleep(500);
                             break;
                         }
                     case 3: // Compras
@@ -545,15 +580,18 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                     break;
                                                                 } else {
                                                                     System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                                                    Thread.sleep(500);
                                                                 }
                                                             } catch (InputMismatchException e) {
                                                                 System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                                                Thread.sleep(500);
                                                                 entrada.nextLine();
                                                             }
                                                         }
                                                         break;
                                                     } else {
                                                         System.out.println("\n*** Este tipo de proveedor no vende este producto ***");
+                                                        Thread.sleep(500);
                                                         break;
                                                     }
                                                 case 2:
@@ -579,15 +617,18 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                     break;
                                                                 } else {
                                                                     System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                                                    Thread.sleep(500);
                                                                 }
                                                             } catch (InputMismatchException e) {
                                                                 System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                                                Thread.sleep(500);
                                                                 entrada.nextLine();
                                                             }
                                                         }
                                                         break;
                                                     } else {
                                                         System.out.println("\n*** Este tipo de proveedor no vende este producto ***");
+                                                        Thread.sleep(500);
                                                         break;
                                                     }
                                                 case 3:
@@ -613,15 +654,18 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                     break;
                                                                 } else {
                                                                     System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                                                    Thread.sleep(500);
                                                                 }
                                                             } catch (InputMismatchException e) {
                                                                 System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                                                Thread.sleep(500);
                                                                 entrada.nextLine();
                                                             }
                                                         }
                                                         break;
                                                     } else {
                                                         System.out.println("\n*** Este tipo de proveedor no vende este producto ***");
+                                                        Thread.sleep(500);
                                                         break;
                                                     }
                                                 case 4:
@@ -647,28 +691,34 @@ public class Madrid_Fernando_ProyectoFinal {
                                                                     break;
                                                                 } else {
                                                                     System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                                                    Thread.sleep(500);
                                                                 }
                                                             } catch (InputMismatchException e) {
                                                                 System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                                                Thread.sleep(500);
                                                                 entrada.nextLine();
                                                             }
                                                         }
                                                         break;
                                                     } else {
                                                         System.out.println("\n*** Este tipo de proveedor no vende este producto ***");
+                                                        Thread.sleep(500);
                                                         break;
                                                     }
                                                 case 5:
                                                     System.out.println("\n*** Has salido de Compras ***\n");
+                                                    Thread.sleep(500);
                                                     salirSeccion = true;
                                                     break;
                                                 default:
                                                     System.out.println("\n*** Esta opcion no existe ***");
+                                                    Thread.sleep(500);
                                                     continue;
                                             }
                                             break;
                                         } catch (InputMismatchException e) {
                                             System.out.println("\n*** Formato Ingresado Invalido ***");
+                                            Thread.sleep(500);
                                             entrada.nextLine();
                                         }
                                     }
@@ -724,6 +774,7 @@ public class Madrid_Fernando_ProyectoFinal {
                                             caja -= totalCompras; // Se le resta el total de la compra a la caja
                                             margenCompras += totalCompras; // Contador del margen de ventas para seccion de Reportes
                                             cantidadCompras++; // Contador de compras realizadas para la seccion de Reportes
+                                            Thread.sleep(3000);
 
                                             // Chequeo de la mayor compra
                                             if (totalCompras >= compraMayor) {
@@ -757,15 +808,18 @@ public class Madrid_Fernando_ProyectoFinal {
                                         ventaTrigo = 0;
                                         ventaMaiz = 0;
                                         salirSeccion = true;
+                                        Thread.sleep(1000);
                                     }
                                 } else {
                                     System.out.println("\n*** Este tipo de cliente no existe ***");
+                                    Thread.sleep(500);
                                 }
                             }
                             break;
                         } else {
                             System.out.println("\n            **    ERROR    **");
                             System.out.println("No puedes ingresar porque no has abierto caja.\n");
+                            Thread.sleep(500);
                             break;
                         }
                     case 4: // Reportes
@@ -803,11 +857,12 @@ public class Madrid_Fernando_ProyectoFinal {
                             System.out.println("| Producto Estrella: " + productoEstrella);
                             System.out.println(String.format("| Cantidad Vendida: %.1fkg\n", cantidadEstrella));
                             System.out.println("====================================\n");
-                            Thread.sleep(5000);
+                            Thread.sleep(3000);
                             break;
                         } else {
                             System.out.println("\n            **    ERROR    **");
                             System.out.println("No puedes ingresar porque no has abierto caja.\n");
+                            Thread.sleep(500);
                             break;
                         }
                     case 5: // Cierre de Caja
@@ -834,15 +889,19 @@ public class Madrid_Fernando_ProyectoFinal {
                                                 System.out.println(String.format("\nSe guardo en el banco Lps.%.2f\n", guardarBanco));
                                                 cierreCaja = true;
                                                 abrirCaja = false;
+                                                Thread.sleep(1000);
                                                 break;
                                             } else {
                                                 System.out.println("\n*** Ingrese una cantidad mayor que 0 ***\n");
+                                                Thread.sleep(500);
                                             }
                                         } else {
                                             System.out.println("\n*** No puedes depositar mas del 60% del efectivo en caja ***\n");
+                                            Thread.sleep(500);
                                         }
                                     } catch (InputMismatchException e) {
                                         System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                                        Thread.sleep(500);
                                         entrada.nextLine();
                                     }
                                 }
@@ -851,11 +910,13 @@ public class Madrid_Fernando_ProyectoFinal {
                                 System.out.println("        Se ha realizado el cierre de caja\n");
                                 cierreCaja = true;
                                 abrirCaja = false;
+                                Thread.sleep(500);
                                 break;
                             }
                         } else {
                             System.out.println("\n            **    ERROR    **");
                             System.out.println("No puedes ingresar porque no has abierto caja.\n");
+                            Thread.sleep(500);
                             break;
                         }
                         break;
@@ -863,17 +924,21 @@ public class Madrid_Fernando_ProyectoFinal {
                         if(!abrirCaja || cierreCaja){
                             System.out.println("\nQue tenga lindo dia!\n");
                             salirPrograma = true;
+                            Thread.sleep(1000);
                             break;
                         }else{
                             System.out.println("\n*** No puedes salir si no has cerrado caja ***\n");
+                            Thread.sleep(500);
                             break;
                         }
                     default: // Opcion Invalida
                         System.out.println("\n*** Opcion Ingresada Invalida ***\n");
+                        Thread.sleep(500);
                         break;
                 }
             } catch (InputMismatchException e) {
                 System.out.println("\n*** Formato Ingresado Invalido ***\n");
+                Thread.sleep(500);
                 entrada.nextLine();
             }
         }
