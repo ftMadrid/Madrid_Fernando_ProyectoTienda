@@ -424,7 +424,7 @@ public class Madrid_Fernando_ProyectoTienda {
                                             if (salirSeccion) { // Chequeo cuando se sale de ventas sin realizar ninguna venta
                                                 break;
                                             }
-
+                                            
                                             System.out.println("\nDesea agregar algo mas? (Si/No)");
                                             seguirComprando = entrada.next();
 
